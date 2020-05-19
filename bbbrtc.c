@@ -390,7 +390,7 @@ enum clock_choice_t  { NONE , NOW, SLEEP , WAKE };
 
 // Returns the offset into the RTC base of the record to the selected clock
 
-unsigned clock_choice_off( clock_choice_t clock_choice ) {
+unsigned clock_choice_off( enum clock_choice_t clock_choice ) {
 
     switch (clock_choice) {
 
@@ -408,7 +408,7 @@ unsigned clock_choice_off( clock_choice_t clock_choice ) {
 
 }
 
-const char *clock_choice_name( clock_choice_t clock_choice ) {
+const char *clock_choice_name( enum clock_choice_t clock_choice ) {
 
     switch (clock_choice) {
 
@@ -430,7 +430,7 @@ const char *clock_choice_name( clock_choice_t clock_choice ) {
 }
 
 int cmd_now( const char *new_time ) {
-  clock_choice_t clock_choice=NOW;
+  enum clock_choice_t clock_choice=NOW;
 
   int fd;
 
@@ -482,7 +482,7 @@ int cmd_now( const char *new_time ) {
 }
 
 int cmd_sleep( const char *new_time ) {
-  clock_choice_t clock_choice=SLEEP;
+  enum clock_choice_t clock_choice=SLEEP;
 
   int fd;
 
@@ -544,7 +544,7 @@ int cmd_sleep( const char *new_time ) {
 }
 
 int cmd_wake( const char *new_time ) {
-  clock_choice_t clock_choice=WAKE;
+  enum clock_choice_t clock_choice=WAKE;
 
   int fd;
 
@@ -614,7 +614,7 @@ int cmd_wake( const char *new_time ) {
 }
 
 int cmd_long_reset( const char *down_time, const char *delay ) {
-  clock_choice_t clock_choice=WAKE;
+  enum clock_choice_t clock_choice=WAKE;
 
   int fd;
 
@@ -758,7 +758,7 @@ int cmd_unlock() {
 
 int main(int argc, char **argv) {
 
-    clock_choice_t clock_choice=NONE;
+    enum clock_choice_t clock_choice=NONE;
 
     const char *new_time=NULL;			// new time specified?
     const char *down_time=NULL;			// new time specified?
